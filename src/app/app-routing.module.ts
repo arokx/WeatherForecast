@@ -1,16 +1,26 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CURRENT, FORECAST } from './core/constants/app-urls.constant';
 
 const routes: Routes = [
   {
-    path: 'current',
+    path: `${CURRENT}`,
     loadChildren: () => import('src/app/current-weather/current-weather.module')
       .then(m => m.CurrentWeatherModule)
   },
   {
-    path: 'forecast',
+    path: `${FORECAST}`,
     loadChildren: () => import('src/app/forecast/forecast.module')
       .then(m => m.ForecastModule)
+  }, 
+  {
+    path:'**',
+    redirectTo:`${CURRENT}`
+  },
+  { 
+    path: '',
+    redirectTo: `${CURRENT}`, 
+    pathMatch: 'full' 
   }
 ];
 
