@@ -1,1 +1,53 @@
-<p>current-weather works!</p>
+<section class="vh-100">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div>
+        <h3 class="mb-4 pb-2 fw-normal">
+          {{ location?.name }},{{ location?.country }}
+        </h3>
+        <div>
+          <div class="row">
+            <div class="col-sm">
+              <h4>
+                {{ location?.localtime | date : "shortTime" }}
+              </h4>
+            </div>
+            <div class="col-sm">
+              <div class="input-group rounded mb-3">
+                <h4>{{ current?.condition?.text }}</h4>
+                <img [src]="current?.condition?.icon" />
+              </div>
+            </div>
+            <div class="col-sm">
+              <h4>{{ current?.temp_c }}°C | {{ current?.temp_f }}F</h4>
+            </div>
+          </div>
+        </div>
+        <div class="card shadow-0 border">
+          <div class="card-body p-4">
+            <h4 class="mb-1 sfw-normal">Current Weather</h4>
+
+            <p class="mb-2">
+              Wind Speed: <strong>{{ current?.wind_kph }} KPH</strong>
+            </p>
+            <p class="mb-2">
+              Gust Wind: <strong>{{ current?.gust_kph }} KPH</strong>
+            </p>
+            <p class="mb-2">
+              Feels like: <strong>{{ current?.feelslike_c }}°C</strong>
+            </p>
+            <p class="mb-2">
+              Humidity: <strong>{{ current?.humidity }}°C</strong>
+            </p>
+            <p class="mb-2">
+              Clouds: <strong>{{ current?.cloud }}°C</strong>
+            </p>
+            <p class="mb-2">
+              Pressure: <strong>{{ current?.pressure_mb }}mb</strong>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
