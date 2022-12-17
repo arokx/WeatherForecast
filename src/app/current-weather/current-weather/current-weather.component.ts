@@ -17,8 +17,10 @@ export class CurrentWeatherComponent extends BaseComponent implements OnInit {
   }
 
   loadCurrentWeather() {
-    this.currentWeatherService.loadCurrentWeather().subscribe((res) => {
-      console.log(res);
-    });
+    this.subscriptions.add(
+      this.currentWeatherService.loadCurrentWeather().subscribe((res) => {
+        console.log(res);
+      })
+    );
   }
 }
