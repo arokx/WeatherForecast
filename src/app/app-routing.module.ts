@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CURRENT, FORECAST } from './core/constants/app-urls.constant';
+import { CURRENT, FORECAST } from '@core/constants/app-urls.constant';
 
 const routes: Routes = [
   {
