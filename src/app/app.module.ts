@@ -7,6 +7,7 @@ import { SideNavigationComponent } from './side-navigation/side-navigation.compo
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ForecastModule } from './forecast/forecast.module';
 import { CurrentWeatherModule } from './current-weather/current-weather.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { CurrentWeatherModule } from './current-weather/current-weather.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     ForecastModule,
     CurrentWeatherModule
   ],
