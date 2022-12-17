@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
+import { CurrentWeatherRoutingModule } from './current-weather-routing.module';
 
 
 
@@ -9,7 +10,8 @@ import { CurrentWeatherComponent } from './current-weather/current-weather.compo
     CurrentWeatherComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    CurrentWeatherRoutingModule
   ]
 })
 export class CurrentWeatherModule { }
