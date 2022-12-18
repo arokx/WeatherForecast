@@ -10,6 +10,7 @@ import { CurrentWeatherModule } from './current-weather/current-weather.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '@blocks/spinner/spinner.component';
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SpinnerComponent } from '@blocks/spinner/spinner.component';
     FormsModule,
     HttpClientModule,
     ForecastModule,
-    CurrentWeatherModule
+    CurrentWeatherModule,
+    ToastrModule.forRoot(), // ToastrModule added
   ],
   providers: [],
   bootstrap: [AppComponent]
