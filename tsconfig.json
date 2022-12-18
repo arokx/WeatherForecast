@@ -25,6 +25,7 @@
     "paths": {
       "@assets/*": ["src/assets/*"],
       "@core/*": ["src/app/core/*"],
+      "@blocks/*": ["src/app/blocks/*"]
     }
   },
   "angularCompilerOptions": {

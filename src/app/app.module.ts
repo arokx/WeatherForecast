@@ -9,11 +9,13 @@ import { ForecastModule } from './forecast/forecast.module';
 import { CurrentWeatherModule } from './current-weather/current-weather.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { SpinnerComponent } from '@blocks/spinner/spinner.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SideNavigationComponent
+    SideNavigationComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,
