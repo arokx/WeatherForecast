@@ -1,50 +1,61 @@
-<section class="vh-100">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
-      <div>
-        <h3 class="mb-4 pb-2 fw-normal">
+<section class="current-weather">
+  <div class="container-fluid h-100 m-0 p-0 mt-3">
+    <div class="row d-flex justify-content-center h-100 m-0">
+      <div class="ps-0">
+        <h3 class="mb-4 pb-2 title">
           {{ location?.name }},{{ location?.country }}
         </h3>
-        <div>
-          <div class="row">
-            <div class="col-sm">
-              <h4>
-                {{ location?.localtime | date : "shortTime" }}
-              </h4>
+        <div class="p-0 mb-3">
+          <div class="row row mb-3 p-0 m-0">
+            <div class="col-sm header-stats align-items-center d-flex me-3">
+              <div>
+                <h4 class="mb-0">
+                  {{ location?.localtime | date : "shortTime" }}
+                </h4>
+              </div>
             </div>
-            <div class="col-sm">
-              <div class="input-group rounded mb-3">
-                <h4>{{ current?.condition?.text }}</h4>
+            <div class="col-sm header-stats align-items-center d-flex me-3">
+              <div
+                class="input-group rounded align-items-center justify-content-center"
+              >
+                <h4 class="mb-0">{{ current?.condition?.text }}</h4>
                 <img [src]="current?.condition?.icon" />
               </div>
             </div>
-            <div class="col-sm">
-              <h4>{{ current?.temp_c }}°C | {{ current?.temp_f }}F</h4>
+            <div class="col-sm header-stats align-items-center d-flex">
+              <div>
+                <h4 class="mb-0">
+                  {{ current?.temp_c }}°C | {{ current?.temp_f }}F
+                </h4>
+              </div>
             </div>
           </div>
         </div>
-        <div class="card shadow-0 border">
+        <div class="card shadow-0">
           <div class="card-body p-4">
-            <h4 class="mb-1 sfw-normal">Current Weather</h4>
+            <h4 class="mb-1 sfw-normal mb-3">Current Weather</h4>
 
-            <p class="mb-2">
-              Wind Speed: <strong>{{ current?.wind_kph }} KPH</strong>
-            </p>
-            <p class="mb-2">
-              Gust Wind: <strong>{{ current?.gust_kph }} KPH</strong>
-            </p>
-            <p class="mb-2">
-              Feels like: <strong>{{ current?.feelslike_c }}°C</strong>
-            </p>
-            <p class="mb-2">
-              Humidity: <strong>{{ current?.humidity }}°C</strong>
-            </p>
-            <p class="mb-2">
-              Clouds: <strong>{{ current?.cloud }}°C</strong>
-            </p>
-            <p class="mb-2">
-              Pressure: <strong>{{ current?.pressure_mb }}mb</strong>
-            </p>
+            <div class="row">
+              <div class="col text-center">Wind Speed</div>
+              <div class="col text-center">Gust Wind</div>
+
+              <div class="col text-center">Feels like</div>
+              <div class="col text-center">Humidity</div>
+
+              <div class="col text-center">Clouds</div>
+              <div class="col text-center">Pressure</div>
+            </div>
+
+            <div class="row">
+              <div class="col text-center">{{ current?.wind_kph }} KPH</div>
+              <div class="col text-center">{{ current?.gust_kph }} KPH</div>
+
+              <div class="col text-center">{{ current?.feelslike_c }}°C</div>
+              <div class="col text-center">{{ current?.humidity }}°C</div>
+
+              <div class="col text-center">{{ current?.cloud }}</div>
+              <div class="col text-center">{{ current?.pressure_mb }}mb</div>
+            </div>
           </div>
         </div>
       </div>

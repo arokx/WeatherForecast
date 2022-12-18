@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { Forecast } from '@core/models/forecast.model';
+import { Location } from '@core/models/location.model';
 import { ShareDataService } from '@core/services/share-data.service';
 import { ForecastService } from '../services/forecast.service';
 
@@ -12,6 +13,7 @@ import { ForecastService } from '../services/forecast.service';
 export class ForecastComponent extends BaseComponent implements OnInit {
   forecast: Forecast | undefined;
   searchCriteria: string = '';
+  location: Location | undefined;
 
   constructor(
     private forecastService: ForecastService,
@@ -39,6 +41,7 @@ export class ForecastComponent extends BaseComponent implements OnInit {
         .subscribe((res) => {
           if (res) {
             this.forecast = res.forecast;
+            this.location = res.location;
           }
         })
     );

@@ -1,5 +1,14 @@
 <section class="forecast-area-wrapper">
-    <ng-container *ngFor="let item of forecast?.forecastday">
-        <app-forecast-detail [forecastDay]="item"></app-forecast-detail>
-    </ng-container>
+  <div class="container-fluid">
+      <h3 class="mb-4 pb-2 forecast-title">
+        {{ location?.name }},{{ location?.country }}
+      </h3>
+    <div class="row">
+      <ng-container *ngFor="let item of forecast?.forecastday">
+        <div class="mb-3 col-12 col-sm-12 col-md-6 forecast-detail">
+          <app-forecast-detail [forecastDay]="item"></app-forecast-detail>
+        </div>
+      </ng-container>
+    </div>
+  </div>
 </section>

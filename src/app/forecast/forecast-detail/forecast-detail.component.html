@@ -1,47 +1,54 @@
 <div class="forecast-detail-container">
-    <div class="forecast-detail-widget-container">
-      <div class="top-left widget-container">
-        <h1 class="city" id="city">Weather Widget App</h1>
-        <h2 id="day">{{ forecastDay?.date | date :'EEEE'}}</h2>
-        <h3 id="date">{{ forecastDay?.date | date : "mediumDate" }}</h3>
-        <h3 id="time">{{ forecastDay?.date | date : "shortTime" }}</h3>
-        <!--       <a target="_blank" href="https://codepen.io/myleschuahiock/"><p id="codepen-link">codepen.io/myleschuahiock</p></a> -->
-        <p class="geo"></p>
-      </div>
-      <div class="top-right widget-container">
-        <h2 id="day">{{forecastDay?.day?.condition?.text}}</h2>
-        <div class="weather-img-wrapper">
-          <img
-            class="weather-icon"
-            [src]="forecastDay?.day?.condition?.icon"
-          />
-        </div>
-      </div>
+  <div class="forecast-detail-widget-container">
+    <div class="top-left widget-container d-flex">
+      <h4 class="m-0 me-2" id="day">{{ forecastDay?.date | date : "EEEE" }}</h4>
+      <h4 class="m-0 me-2" id="date">
+        {{ forecastDay?.date | date : "mediumDate" }}
+      </h4>
+      <h4 class="m-0" id="time">
+        {{ forecastDay?.date | date : "shortTime" }}
+      </h4>
+      <p class="geo"></p>
+    </div>
+    <div class="top-right widget-container weather-details">
       <div class="bottom-left widget-container">
         <div class="temp-container">
-          <h1 id="temperature">{{forecastDay?.day?.avgtemp_c}}</h1>
+          <h1 id="temperature">{{ forecastDay?.day?.avgtemp_c }}</h1>
           <h2 id="celsius">&deg;C</h2>
-          <h1 id="temperature">{{forecastDay?.day?.avgtemp_f}}</h1>
+          <h1 id="temperature">/ {{ forecastDay?.day?.avgtemp_f }}</h1>
           <h2 id="temp-divider">/</h2>
           <h2 id="fahrenheit">&deg;F</h2>
         </div>
       </div>
-      <div class="bottom-right widget-container">
-        <div class="other-details-key">
-          <p>Max Wind Speed</p>
-          <p>Humidity</p>
-          <p>Chance of Snow</p>
-          <p>Sunrise Time</p>
-          <p>Sunset Time</p>
+      <div class="forecast-weather">
+        <h2 id="day" class="mb-0">{{ forecastDay?.day?.condition?.text }}</h2>
+      </div>
+      <div class="weather-img-wrapper">
+        <img class="weather-icon" [src]="forecastDay?.day?.condition?.icon" />
+      </div>
+    </div>
+
+    <div class="bottom-right widget-container">
+      <div class="other-details-key d-flex row">
+        <div class="col-3">Max Wind Speed</div>
+        <div class="col-2 text-center">Humidity</div>
+        <div class="col-3 text-center">Chance of Snow</div>
+        <div class="col-2 text-center">Sunrise Time</div>
+        <div class="col-2 text-center">Sunset Time</div>
+      </div>
+      <div class="other-details-values d-flex row">
+        <div class="col-3 text-left">
+          {{ forecastDay?.day?.maxwind_kph }} Km/h
         </div>
-        <div class="other-details-values">
-          <p class="windspeed">{{forecastDay?.day?.maxwind_kph}} Km/h</p>
-          <p class="humidity">{{forecastDay?.day?.avghumidity}} %</p>
-          <p class="pressure">{{forecastDay?.day?.daily_chance_of_snow}}</p>
-          <p class="sunrise-time">{{forecastDay?.astro?.sunrise}}</p>
-          <p class="sunset-time">{{forecastDay?.astro?.sunrise}}</p>
+        <div class="col-2 text-center">
+          {{ forecastDay?.day?.avghumidity }} %
         </div>
+        <div class="col-3 text-center">
+          {{ forecastDay?.day?.daily_chance_of_snow }}
+        </div>
+        <div class="col-2 text-center">{{ forecastDay?.astro?.sunrise }}</div>
+        <div class="col-2 text-center">{{ forecastDay?.astro?.sunrise }}</div>
       </div>
     </div>
   </div>
-  
+</div>
