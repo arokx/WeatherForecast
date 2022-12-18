@@ -10,13 +10,12 @@ import { CurrentWeatherModule } from './current-weather/current-weather.module';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '@blocks/spinner/spinner.component';
+import { ToastrModule } from 'ngx-toastr';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SideNavigationComponent,
-    SpinnerComponent
-  ],
+  declarations: [AppComponent, SideNavigationComponent, SpinnerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -24,9 +23,14 @@ import { SpinnerComponent } from '@blocks/spinner/spinner.component';
     FormsModule,
     HttpClientModule,
     ForecastModule,
-    CurrentWeatherModule
+    CurrentWeatherModule,
+    ToastrModule.forRoot(),
+    AgmCoreModule.forRoot({
+      apiKey: environment.GOOGLE_API_KEY,
+      libraries: ['places'],
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

@@ -10,7 +10,13 @@ export class CurrentWeatherService {
   constructor(private apiBaseService: ApiBaseService) {}
 
   loadCurrentWeather(searchCriteria: string): Observable<any> {
-    if (searchCriteria == '') searchCriteria = environment.defaultSearchCriteria;
+    if (searchCriteria == '') {
+      if (localStorage.getItem('GeoLocation')?.toString()!) {
+        searchCriteria = localStorage.getItem('GeoLocation')?.toString()!;
+      } else {
+        searchCriteria = environment.defaultSearchCriteria;
+      }
+    }
     return this.apiBaseService.get<any>([this.createPath(searchCriteria)]);
   }
 

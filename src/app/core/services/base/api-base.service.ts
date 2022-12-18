@@ -4,6 +4,7 @@ import { map, Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/internal/operators/catchError';
 import { environment } from 'src/environments/environment';
 import { SpinnerService } from '@core/services/spinner.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +15,7 @@ export class ApiBaseService {
 
   constructor(
     private httpClient: HttpClient,
-    private spinnerService: SpinnerService
+    private spinnerService: SpinnerService //private toastr: ToastrService
   ) {
     this.baseUrl = environment.baseApi;
     this.defaultVersion = environment.defaultApiVersion;
@@ -26,6 +27,7 @@ export class ApiBaseService {
     const apiPath = this.getApiUrl(path.join('/'), version);
     //make spinner visible
     this.spinnerService.show();
+
     return this.httpClient.get(apiPath, {}).pipe(
       map((data) => {
         const apiData = data as any;
@@ -34,6 +36,7 @@ export class ApiBaseService {
         return apiData;
       }),
       catchError((err) => {
+        this.spinnerService.hide();
         this.showErrors(err.error);
         return throwError(err);
       })
@@ -43,6 +46,8 @@ export class ApiBaseService {
   //handle the errors
   private showErrors(error: any): void {
     if (error != null) {
+      //this.toastr.error(error?.error?.message);
+      alert(error?.error?.message);
       console.log(error?.error?.message);
     }
   }
