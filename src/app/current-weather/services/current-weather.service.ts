@@ -10,7 +10,7 @@ export class CurrentWeatherService {
   constructor(private apiBaseService: ApiBaseService) {}
 
   loadCurrentWeather(searchCriteria: string): Observable<any> {
-    if (searchCriteria == '') searchCriteria = 'London';
+    if (searchCriteria == '') searchCriteria = environment.defaultSearchCriteria;
     return this.apiBaseService.get<any>([this.createPath(searchCriteria)]);
   }
 
