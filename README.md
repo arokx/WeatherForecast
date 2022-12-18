@@ -32,4 +32,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 Application is using google apis to track the Geo locations of the user. Therefore please allow location permission on the browser
 
-Weatherapi.com documentation says they provide maximum 10 days forecast for free. But they allow maximum 3 days.Please note that
+Weatherapi.com documentation says they provide maximum 10 days forecast for free. But they allow maximum 3 days. Note that as well
