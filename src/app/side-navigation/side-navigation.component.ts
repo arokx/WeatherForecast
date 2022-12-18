@@ -1,15 +1,19 @@
 import { Component, OnInit } from '@angular/core';
+import { ShareDataService } from '@core/services/base/share-data.service';
 
 @Component({
   selector: 'app-side-navigation',
   templateUrl: './side-navigation.component.html',
-  styleUrls: ['./side-navigation.component.scss']
+  styleUrls: ['./side-navigation.component.scss'],
 })
-export class SideNavigationComponent implements OnInit {
+export class SideNavigationComponent {
+  searchCriterias: string = '';
 
-  constructor() { }
+  constructor(private shareDataService: ShareDataService) {}
 
-  ngOnInit(): void {
+  search() {
+    // pass and store entered search criteria in the datashare service
+    if (this.searchCriterias)
+      this.shareDataService.setSearchCriterias(this.searchCriterias);
   }
-
 }
