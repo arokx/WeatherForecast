@@ -15,9 +15,8 @@ export class ApiBaseService {
 
   constructor(
     private httpClient: HttpClient,
-    private spinnerService: SpinnerService
-  ) //private toastr: ToastrService
-  {
+    private spinnerService: SpinnerService //private toastr: ToastrService
+  ) {
     this.baseUrl = environment.baseApi;
     this.defaultVersion = environment.defaultApiVersion;
   }

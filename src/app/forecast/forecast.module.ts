@@ -4,16 +4,8 @@ import { ForecastComponent } from './forecast/forecast.component';
 import { ForecastRoutingModule } from './forecast-routing.module';
 import { ForecastDetailComponent } from './forecast-detail/forecast-detail.component';
 
-
-
 @NgModule({
-  declarations: [
-    ForecastComponent,
-    ForecastDetailComponent
-  ],
-  imports: [
-    CommonModule,
-    ForecastRoutingModule
-  ]
+  declarations: [ForecastComponent, ForecastDetailComponent],
+  imports: [CommonModule, ForecastRoutingModule],
 })
-export class ForecastModule { }
+export class ForecastModule {}

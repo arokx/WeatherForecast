@@ -4,14 +4,12 @@ import { Forecastday } from '@core/models/forecast-forecastday';
 @Component({
   selector: 'app-forecast-detail',
   templateUrl: './forecast-detail.component.html',
-  styleUrls: ['./forecast-detail.component.scss']
+  styleUrls: ['./forecast-detail.component.scss'],
 })
 export class ForecastDetailComponent implements OnInit {
-  @Input() forecastDay:Forecastday | undefined;
+  @Input() forecastDay: Forecastday | undefined;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit(): void {}
 }

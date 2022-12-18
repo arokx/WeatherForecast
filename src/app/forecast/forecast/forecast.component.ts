@@ -24,7 +24,7 @@ export class ForecastComponent extends BaseComponent implements OnInit {
       this.shareDataService.getSearchCriterias().subscribe((res) => {
         if (res) {
           this.searchCriteria = res;
-          this.loadWeatherForecast(this.searchCriteria);   
+          this.loadWeatherForecast(this.searchCriteria);
         }
       })
     );

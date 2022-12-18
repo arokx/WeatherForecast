@@ -15,11 +15,7 @@ import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environment';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    SideNavigationComponent,
-    SpinnerComponent
-  ],
+  declarations: [AppComponent, SideNavigationComponent, SpinnerComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -28,13 +24,13 @@ import { environment } from 'src/environments/environment';
     HttpClientModule,
     ForecastModule,
     CurrentWeatherModule,
-    ToastrModule.forRoot(), // ToastrModule added
+    ToastrModule.forRoot(),
     AgmCoreModule.forRoot({
       apiKey: environment.GOOGLE_API_KEY,
-      libraries: ['places']
-    })
+      libraries: ['places'],
+    }),
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
