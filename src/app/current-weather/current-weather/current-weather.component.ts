@@ -3,6 +3,7 @@ import { BaseComponent } from '@core/base/base.component';
 import { CurrentForecast } from '@core/models/current-forecast.model';
 import { Current } from '@core/models/current-weather.model';
 import { Location } from '@core/models/location.model';
+import { ShareDataService } from '@core/services/base/share-data.service';
 import { CurrentWeatherService } from '../services/current-weather.service';
 
 @Component({
@@ -14,18 +15,26 @@ export class CurrentWeatherComponent extends BaseComponent implements OnInit {
   currentForecast: CurrentForecast | undefined;
   location: Location | undefined;
   current: Current | undefined;
+  searchCriteria: string = '';
 
-  constructor(private currentWeatherService: CurrentWeatherService) {
+  constructor(private currentWeatherService: CurrentWeatherService,
+    private shareDataService: ShareDataService) {
     super();
+    this.subscriptions.add(
+      this.shareDataService.getSearchCriterias().subscribe((res) => {
+        this.searchCriteria = res;
+        this.loadCurrentWeather(this.searchCriteria);
+      })
+    );
   }
 
   ngOnInit(): void {
-    this.loadCurrentWeather();
+    this.loadCurrentWeather(this.searchCriteria);
   }
 
-  loadCurrentWeather() {
+  loadCurrentWeather(searchCriteria:string) {
     this.subscriptions.add(
-      this.currentWeatherService.loadCurrentWeather("London").subscribe((res) => {
+      this.currentWeatherService.loadCurrentWeather(searchCriteria).subscribe((res) => {
         if (res) {
           this.currentForecast = res;
           this.location = res.location;

@@ -9,8 +9,8 @@ import { environment } from 'src/environments/environment';
 export class CurrentWeatherService {
   constructor(private apiBaseService: ApiBaseService) {}
 
-
-  loadCurrentWeather(searchCriteria: string = "London"): Observable<any> {
+  loadCurrentWeather(searchCriteria: string): Observable<any> {
+    if (searchCriteria == '') searchCriteria = 'London';
     return this.apiBaseService.get<any>([this.createPath(searchCriteria)]);
   }
 
