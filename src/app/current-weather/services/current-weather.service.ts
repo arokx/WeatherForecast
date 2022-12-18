@@ -1,15 +1,22 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { ApiBaseService } from '@core/services/base/api-base.service';
+import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CurrentWeatherService {
-  constructor(private http: HttpClient) {}
+  constructor(private apiBaseService: ApiBaseService) {}
 
-  loadCurrentWeather() {
-    return this.http.get<any>(
-      'http://api.weatherapi.com/v1/current.json?key=6c26074ad39d454eb9f132032221512&q=London&aqi=no'
-    );
+
+  loadCurrentWeather(): Observable<any> {
+    let current = 'current.json';
+    let key = `?key=${environment.key}`;
+    let parameters = `&q=London&aqi=no`;
+    let path = current + key + parameters;
+    return this.apiBaseService.get<any>([path]);
   }
+
+
 }
