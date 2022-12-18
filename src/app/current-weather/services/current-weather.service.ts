@@ -10,13 +10,16 @@ export class CurrentWeatherService {
   constructor(private apiBaseService: ApiBaseService) {}
 
 
-  loadCurrentWeather(): Observable<any> {
-    let current = 'current.json';
-    let key = `?key=${environment.key}`;
-    let parameters = `&q=London&aqi=no`;
-    let path = current + key + parameters;
-    return this.apiBaseService.get<any>([path]);
+  loadCurrentWeather(searchCriteria: string = "London"): Observable<any> {
+    return this.apiBaseService.get<any>([this.createPath(searchCriteria)]);
   }
 
+  createPath(searchCriteria: string): string {
+    let current = 'current.json';
+    let key = `?key=${environment.key}`;
+    let parameters = `&q=${searchCriteria}&aqi=no`;
+    let path = current + key + parameters;
 
+    return path;
+  }
 }
