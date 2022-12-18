@@ -15,9 +15,9 @@ export class ApiBaseService {
 
   constructor(
     private httpClient: HttpClient,
-    private spinnerService: SpinnerService,
-    private toastr: ToastrService
-  ) {
+    private spinnerService: SpinnerService
+  ) //private toastr: ToastrService
+  {
     this.baseUrl = environment.baseApi;
     this.defaultVersion = environment.defaultApiVersion;
   }
@@ -28,7 +28,7 @@ export class ApiBaseService {
     const apiPath = this.getApiUrl(path.join('/'), version);
     //make spinner visible
     this.spinnerService.show();
-   
+
     return this.httpClient.get(apiPath, {}).pipe(
       map((data) => {
         const apiData = data as any;
@@ -47,7 +47,8 @@ export class ApiBaseService {
   //handle the errors
   private showErrors(error: any): void {
     if (error != null) {
-      this.toastr.error(error?.error?.message);
+      //this.toastr.error(error?.error?.message);
+      alert(error?.error?.message);
       console.log(error?.error?.message);
     }
   }

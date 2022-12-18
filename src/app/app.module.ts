@@ -11,6 +11,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { SpinnerComponent } from '@blocks/spinner/spinner.component';
 import { ToastrModule } from 'ngx-toastr';
+import { AgmCoreModule } from '@agm/core';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,10 @@ import { ToastrModule } from 'ngx-toastr';
     ForecastModule,
     CurrentWeatherModule,
     ToastrModule.forRoot(), // ToastrModule added
+    AgmCoreModule.forRoot({
+      apiKey: environment.GOOGLE_API_KEY,
+      libraries: ['places']
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
