@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ShareDataService } from '@core/services/base/share-data.service';
+import { ShareDataService } from '@core/services/share-data.service';
 
 @Component({
   selector: 'app-side-navigation',

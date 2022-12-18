@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BaseComponent } from '@core/base/base.component';
 import { Forecast } from '@core/models/forecast.model';
-import { ShareDataService } from '@core/services/base/share-data.service';
+import { ShareDataService } from '@core/services/share-data.service';
 import { ForecastService } from '../services/forecast.service';
 
 @Component({

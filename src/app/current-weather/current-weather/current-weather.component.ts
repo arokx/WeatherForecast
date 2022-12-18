@@ -3,7 +3,7 @@ import { BaseComponent } from '@core/base/base.component';
 import { CurrentForecast } from '@core/models/current-forecast.model';
 import { Current } from '@core/models/current-weather.model';
 import { Location } from '@core/models/location.model';
-import { ShareDataService } from '@core/services/base/share-data.service';
+import { ShareDataService } from '@core/services/share-data.service';
 import { CurrentWeatherService } from '../services/current-weather.service';
 
 @Component({
