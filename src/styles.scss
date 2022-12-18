@@ -1,53 +1,194 @@
 @import "~bootstrap/scss/bootstrap";
 @import "node_modules/ngx-bootstrap/datepicker/bs-datepicker";
 
-body{
+body {
+  height: 100vh;
+  width: 100vw;
+  box-sizing: border-box;
+  margin: 0px;
+  padding: 0px;
+
+  .app-wrapper {
+    display: flex;
     height: 100vh;
     width: 100vw;
     box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
-
-    .app-wrapper{
-        display: flex;
-        height: 100vh;
-        width: 100vw;
-        box-sizing: border-box;
-    }
+  }
 }
 
-.sidenav{
-    background-color: #ebe9e9;
-    height: 100vh;
-    width: 250px;
+.sidenav {
+  background-color: #ebe9e9;
+  height: 100vh;
+  width: 250px;
+  box-sizing: border-box;
+  padding: 40px 0px;
+
+  .sidenav-search-container {
     box-sizing: border-box;
-    padding: 40px 0px;
+    padding: 0px 10px;
+  }
+  .nav-items-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 74px);
+    box-sizing: border-box;
+    justify-content: center;
 
-    .sidenav-search-container{
-        box-sizing: border-box;
-        padding: 0px 10px;
-    }
-    .nav-items-wrapper{
-        display: flex;
-        flex-direction: column;
-        height: calc(100vh - 74px);
-        box-sizing: border-box;
-        justify-content: center;
+    .navbar-nav {
+      .nav-item {
+        text-align: center;
+        padding: 5px;
 
-        .navbar-nav{
+        .nav-link {
+          font-weight: bold;
 
-            .nav-item{
-                text-align: center;
-                padding: 5px;
-
-                .nav-link{
-                    font-weight: bold;
-
-                    &:hover{
-                        color: var(--bs-blue);
-                    }
-                }
-            }
+          &:hover {
+            color: var(--bs-blue);
+          }
         }
+      }
     }
+  }
+}
+.forecast-area-wrapper {
+  box-sizing: border-box;
+  height: 100vh;
+  width: calc(100vw - 260px);
+  margin-right: 10px;
+  overflow-y: auto;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.forecast-detail-container {
+  width: 100%;
+  margin: 10px auto;
+  display: flex;
+  justify-content: center;
+
+  .forecast-detail-widget-container {
+    box-sizing: border-box;
+    display: grid;
+    width: calc(100% - 100px);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 250px 250px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    max-width: 750px;
+    height: 500px;
+
+    .widget-container {
+      padding: 20px;
+      .weather-img-wrapper {
+        display: flex;
+        justify-content: center;
+      }
+      &.bottom-left {
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        align-items: center;
+        border-top: 2px solid dimgray;
+        border-right: 1px solid dimgray;
+      }
+      .weather-icon {
+        height: 150px;
+      }
+      &.bottom-right {
+        display: flex;
+        gap: 5px;
+        justify-content: center;
+        align-items: center;
+        border-top: 2px solid dimgray;
+        border-left: 1px solid dimgray;
+        p {
+          margin: 0px;
+        }
+        .other-details-key {
+          min-width: 100px;
+        }
+        .other-details-values {
+        }
+      }
+    }
+    h1 {
+      font-size: 20px;
+    }
+  }
+  &:last-child {
+    margin-bottom: 0px;
+  }
+}
+
+#temperature,
+#celsius,
+#temp-divider,
+#fahrenheit {
+  display: inline;
+
+  vertical-align: middle;
+}
+
+#temperature {
+  font-size: 60px;
+
+  font-weight: 800;
+
+  margin-right: 5px;
+}
+
+#celsius {
+  margin-right: 10px;
+}
+
+#fahrenheit {
+  margin-right: 5px;
+
+  color: #b0bec5;
+}
+
+#celsius,
+#temp-divider,
+#fahrenheit {
+  font-size: 30px;
+
+  font-weight: 800;
+}
+
+#celsius:hover,
+#fahrenheit:hover {
+  cursor: pointer;
+}
+
+.navigation-toggle {
+  position: fixed;
+
+  top: 5px;
+
+  left: 5px;
+}
+
+body {
+  &.side-nav-hide {
+    app-side-navigation {
+      display: none;
+    }
+
+    .forecast-area-wrapper {
+      width: 100vw;
+    }
+  }
+
+  &.side-nav-show {
+    app-side-navigation {
+      display: unset;
+    }
+
+    .forecast-area-wrapper {
+      width: calc(100vw - 250px);
+    }
+  }
+}
+
+@media screen and (max-width: 860px) {
 }

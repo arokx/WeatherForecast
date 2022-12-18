@@ -1,1 +1,5 @@
-<p>forecast works!</p>
+<section class="forecast-area-wrapper">
+    <ng-container *ngFor="let item of forecast?.forecastday">
+        <app-forecast-detail [forecastDay]="item"></app-forecast-detail>
+    </ng-container>
+</section>
