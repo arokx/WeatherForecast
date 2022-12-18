@@ -4,6 +4,7 @@ import { CurrentForecast } from '@core/models/current-forecast.model';
 import { Current } from '@core/models/current-weather.model';
 import { Location } from '@core/models/location.model';
 import { ShareDataService } from '@core/services/share-data.service';
+import { environment } from 'src/environments/environment';
 import { CurrentWeatherService } from '../services/current-weather.service';
 
 @Component({
@@ -17,8 +18,10 @@ export class CurrentWeatherComponent extends BaseComponent implements OnInit {
   current: Current | undefined;
   searchCriteria: string = '';
 
-  constructor(private currentWeatherService: CurrentWeatherService,
-    private shareDataService: ShareDataService) {
+  constructor(
+    private currentWeatherService: CurrentWeatherService,
+    private shareDataService: ShareDataService
+  ) {
     super();
     this.subscriptions.add(
       this.shareDataService.getSearchCriterias().subscribe((res) => {
@@ -32,16 +35,27 @@ export class CurrentWeatherComponent extends BaseComponent implements OnInit {
     this.loadCurrentWeather(this.searchCriteria);
   }
 
-  loadCurrentWeather(searchCriteria:string) {
+  loadCurrentWeather(searchCriteria: string) {
     this.subscriptions.add(
-      this.currentWeatherService.loadCurrentWeather(searchCriteria).subscribe((res) => {
-        if (res) {
-          this.currentForecast = res;
-          this.location = res.location;
-          this.current = res.current;
-          
-        }
-      })
+      this.currentWeatherService
+        .loadCurrentWeather(this.getSearchCriteria(searchCriteria))
+        .subscribe((res) => {
+          if (res) {
+            this.currentForecast = res;
+            this.location = res.location;
+            this.current = res.current;
+          }
+        })
     );
+  }
+
+  getSearchCriteria(searchCriteria: string): string {
+    if (searchCriteria == '') {
+      if (this.shareDataService.getSearchCriteriasText() != '')
+        return this.shareDataService.getSearchCriteriasText();
+      else return (searchCriteria = environment.defaultSearchCriteria);
+    } else {
+      return searchCriteria;
+    }
   }
 }

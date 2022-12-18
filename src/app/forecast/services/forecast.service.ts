@@ -11,13 +11,6 @@ export class ForecastService {
   constructor(private apiBaseService: ApiBaseService) {}
 
   loadWeatherForecast(searchCriteria: string): Observable<any> {
-    if (searchCriteria == '') {
-      if (localStorage.getItem('GeoLocation')?.toString()!) {
-        searchCriteria = localStorage.getItem('GeoLocation')?.toString()!;
-      } else {
-        searchCriteria = environment.defaultSearchCriteria;
-      }
-    }
     return this.apiBaseService.get<any>([this.createPath(searchCriteria)]);
   }
 
