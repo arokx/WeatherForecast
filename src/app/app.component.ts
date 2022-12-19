@@ -14,7 +14,6 @@ import { ShareDataService } from '@core/services/share-data.service';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title: string = 'AGM project';
   latitude: number = 0;
   longitude: number = 0;
   zoom: number = 0;
