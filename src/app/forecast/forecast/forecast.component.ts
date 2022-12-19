@@ -43,6 +43,7 @@ export class ForecastComponent extends BaseComponent implements OnInit {
           if (res) {
             this.forecast = res.forecast;
             this.location = res.location;
+            this.shareDataService.setSearchedCity(this.location?.name!);
           }
         })
     );

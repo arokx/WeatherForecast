@@ -44,6 +44,7 @@ export class CurrentWeatherComponent extends BaseComponent implements OnInit {
             this.currentForecast = res;
             this.location = res.location;
             this.current = res.current;
+            this.shareDataService.setSearchedCity(this.location?.name!);
           }
         })
     );
