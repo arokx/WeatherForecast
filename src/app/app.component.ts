@@ -6,6 +6,7 @@ import {
   NgZone,
 } from '@angular/core';
 import { MapsAPILoader } from '@agm/core';
+import { ShareDataService } from '@core/services/share-data.service';
 
 @Component({
   selector: 'app-root',
@@ -13,7 +14,6 @@ import { MapsAPILoader } from '@agm/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
-  title: string = 'AGM project';
   latitude: number = 0;
   longitude: number = 0;
   zoom: number = 0;
@@ -23,7 +23,10 @@ export class AppComponent {
   @ViewChild('search')
   public searchElementRef: ElementRef | undefined;
 
-  constructor(private mapsAPILoader: MapsAPILoader, private ngZone: NgZone) {}
+  constructor(
+    private mapsAPILoader: MapsAPILoader,
+    private shareDataService: ShareDataService
+  ) {}
 
   ngOnInit() {
     this.mapsAPILoader.load().then(() => {
@@ -39,11 +42,10 @@ export class AppComponent {
         this.longitude = position.coords.longitude;
         this.zoom = 8;
         if (this.latitude != 0 && this.longitude != 0)
-          localStorage.setItem(
-            'GeoLocation',
+          this.shareDataService.setSearchCriterias(
             this.latitude.toString() + ',' + this.longitude
           );
-        console.log('latitude : ', this.latitude);
+
         this.getAddress(this.latitude, this.longitude);
       });
     }

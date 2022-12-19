@@ -3,6 +3,7 @@ import { BaseComponent } from '@core/base/base.component';
 import { Forecast } from '@core/models/forecast.model';
 import { Location } from '@core/models/location.model';
 import { ShareDataService } from '@core/services/share-data.service';
+import { environment } from 'src/environments/environment';
 import { ForecastService } from '../services/forecast.service';
 
 @Component({
@@ -37,13 +38,24 @@ export class ForecastComponent extends BaseComponent implements OnInit {
   loadWeatherForecast(searchCriteria: string) {
     this.subscriptions.add(
       this.forecastService
-        .loadWeatherForecast(searchCriteria)
+        .loadWeatherForecast(this.getSearchCriteria(searchCriteria))
         .subscribe((res) => {
           if (res) {
             this.forecast = res.forecast;
             this.location = res.location;
+            this.shareDataService.setSearchedCity(this.location?.name!);
           }
         })
     );
+  }
+
+  getSearchCriteria(searchCriteria: string): string {
+    if (searchCriteria == '') {
+      if (this.shareDataService.getSearchCriteriasText() != '')
+        return this.shareDataService.getSearchCriteriasText();
+      else return (searchCriteria = environment.defaultSearchCriteria);
+    } else {
+      return searchCriteria;
+    }
   }
 }
