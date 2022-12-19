@@ -13,6 +13,7 @@ import { SpinnerComponent } from '@blocks/spinner/spinner.component';
 import { ToastrModule } from 'ngx-toastr';
 import { AgmCoreModule } from '@agm/core';
 import { environment } from 'src/environments/environment';
+import { GooglePlaceModule } from 'ngx-google-places-autocomplete';
 
 @NgModule({
   declarations: [AppComponent, SideNavigationComponent, SpinnerComponent],
@@ -29,6 +30,7 @@ import { environment } from 'src/environments/environment';
       apiKey: environment.GOOGLE_API_KEY,
       libraries: ['places'],
     }),
+    GooglePlaceModule
   ],
   providers: [],
   bootstrap: [AppComponent],

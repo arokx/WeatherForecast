@@ -12,15 +12,13 @@
   </button>
   <div class="sidenav-search-container input-group rounded">
     <input
-      type="search"
-      class="form-control rounded search-box me-2"
-      [(ngModel)]="searchCriterias"
-      aria-label="Search"
-      aria-describedby="search-addon"
-    />
-    <button type="button" class="btn btn-primary" (click)="search()">
-      Search
-    </button>
+    class="form-control rounded search-box me-3"
+    ngx-google-places-autocomplete
+    [options]="options"
+    aria-label="Search"
+    aria-describedby="search-addon"
+    (onAddressChange)="handleAddressChange($event)"
+  />
   </div>
   <div class="nav-items-wrapper">
     <ul class="navbar-nav">
