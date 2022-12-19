@@ -7,6 +7,7 @@ import { Subject } from 'rxjs';
 export class ShareDataService {
   private searchCriterias$ = new Subject<string>();
   private searchCriteria: string = '';
+  private city$ = new Subject<string>();
 
   constructor() {}
 
@@ -21,5 +22,13 @@ export class ShareDataService {
 
   getSearchCriteriasText() {
     return this.searchCriteria;
+  }
+
+  setSearchedCity(city:string){
+    return this.city$.next(city);
+  }
+
+  getSearchedCity(){
+    return this.city$.asObservable();
   }
 }
