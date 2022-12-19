@@ -13,7 +13,6 @@ export class SideNavigationComponent {
 
   search() {
     // pass and store entered search criteria in the datashare service
-    if (this.searchCriterias)
       this.shareDataService.setSearchCriterias(this.searchCriterias);
   }
 }
